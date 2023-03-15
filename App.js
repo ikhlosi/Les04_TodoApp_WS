@@ -9,6 +9,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
+  useWindowDimensions,
 } from "react-native";
 import Header from "./src/components/Header";
 import TodoAdder from "./src/components/TodoAdder";
@@ -22,6 +23,10 @@ export default function App() {
     { id: 4, description: "Sell more groceries" },
     { id: 5, description: "Profit" },
   ]);
+
+  const { height, width } = useWindowDimensions();
+
+  console.log(height);
 
   const deleteTodo = (id) => {
     setTodos((prevTodos) => {
