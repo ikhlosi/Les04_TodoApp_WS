@@ -14,14 +14,15 @@ import {
 import Header from "./src/components/Header";
 import TodoAdder from "./src/components/TodoAdder";
 import TodoItem from "./src/components/TodoItem";
+import uuid from "react-native-uuid";
 
 export default function App() {
   const [todos, setTodos] = useState([
-    { id: 1, description: "Buy groceries" },
-    { id: 2, description: "Sell groceries" },
-    { id: 3, description: "Buy more groceries" },
-    { id: 4, description: "Sell more groceries" },
-    { id: 5, description: "Profit" },
+    { id: uuid.v4(), description: "Buy groceries" },
+    { id: uuid.v4(), description: "Sell groceries" },
+    { id: uuid.v4(), description: "Buy more groceries" },
+    { id: uuid.v4(), description: "Sell more groceries" },
+    { id: uuid.v4(), description: "Profit" },
   ]);
 
   const { height, width } = useWindowDimensions();
@@ -41,7 +42,7 @@ export default function App() {
   const addTodo = (text) => {
     if (text.length > 3) {
       setTodos((prevTodos) => {
-        return [{ id: Math.random(), description: text }, ...prevTodos];
+        return [{ id: uuid.v4(), description: text }, ...prevTodos];
       });
     } else {
       Alert.alert("oops", "Todos must be over 3 chars long", [
