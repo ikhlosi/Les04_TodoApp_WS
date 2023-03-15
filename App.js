@@ -12,6 +12,13 @@ export default function App() {
     { id: 4, description: "Sell more groceries" },
     { id: 5, description: "Profit" },
   ]);
+
+  const deleteTodo = (key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.key != key);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -20,7 +27,9 @@ export default function App() {
           <FlatList
             // numColumns={2}
             data={todos}
-            renderItem={(props) => <TodoItem item={props.item} />}
+            renderItem={(props) => (
+              <TodoItem item={props.item} pressHandler={deleteTodo} />
+            )}
             keyExtractor={(item) => item.id}
           />
         </View>
