@@ -84,10 +84,12 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     // height: 500,
     padding: 40,
+    flex: 1,
   },
   list: {
     // backgroundColor: "blue",
     // height: 100,
     marginTop: 40,
+    flex: 1,
   },
 });
