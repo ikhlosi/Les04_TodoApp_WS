@@ -3,7 +3,6 @@
     "name": "Les04_TodoApp_WS",
     "slug": "Les04_TodoApp_WS",
     "version": "1.0.0",
-    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
