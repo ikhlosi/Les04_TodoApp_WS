@@ -7,6 +7,8 @@ import {
   View,
   FlatList,
   Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import Header from "./src/components/Header";
 import TodoAdder from "./src/components/TodoAdder";
@@ -47,21 +49,28 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <TodoAdder addHandler={addTodo} />
-        <View style={styles.list}>
-          <FlatList
-            data={todos}
-            renderItem={(props) => (
-              <TodoItem item={props.item} pressHandler={deleteTodo} />
-            )}
-            keyExtractor={(item) => item.id}
-          />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        console.log("Remove keyboard");
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.content}>
+          <TodoAdder addHandler={addTodo} />
+          <View style={styles.list}>
+            <FlatList
+              data={todos}
+              renderItem={(props) => (
+                <TodoItem item={props.item} pressHandler={deleteTodo} />
+              )}
+              keyExtractor={(item) => item.id}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
