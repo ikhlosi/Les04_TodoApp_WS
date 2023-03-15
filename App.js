@@ -1,11 +1,30 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StatusBar, StyleSheet, Text, View, FlatList } from "react-native";
 
 export default function App() {
+  const [todos, setTodos] = useState([
+    { id: 1, description: "Buy groceries" },
+    { id: 2, description: "Sell groceries" },
+    { id: 3, description: "Buy more groceries" },
+    { id: 4, description: "Sell more groceries" },
+    { id: 5, description: "Profit" },
+  ]);
   return (
     <View style={styles.container}>
-      <View>
-        <View></View>
+      <View style={styles.content}>
+        <View style={styles.list}>
+          <FlatList
+            // numColumns={2}
+            data={todos}
+            renderItem={(props) => (
+              <Text>
+                {props.index} - {props.item.description}
+              </Text>
+            )}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
       </View>
     </View>
   );
