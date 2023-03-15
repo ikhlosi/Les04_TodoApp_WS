@@ -13,9 +13,9 @@ export default function App() {
     { id: 5, description: "Profit" },
   ]);
 
-  const deleteTodo = (key) => {
+  const deleteTodo = (id) => {
     setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.key != key);
+      return prevTodos.filter((todo) => todo.id != id);
     });
   };
 
