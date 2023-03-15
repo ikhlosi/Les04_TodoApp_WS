@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { StatusBar, StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./src/components/Header";
+import TodoItem from "./src/components/TodoItem";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -19,11 +20,7 @@ export default function App() {
           <FlatList
             // numColumns={2}
             data={todos}
-            renderItem={(props) => (
-              <Text>
-                {props.index} - {props.item.description}
-              </Text>
-            )}
+            renderItem={(props) => <TodoItem item={props.item} />}
             keyExtractor={(item) => item.id}
           />
         </View>
