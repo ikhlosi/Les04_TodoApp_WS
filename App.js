@@ -1,7 +1,15 @@
 // import { StatusBar } from 'expo-status-bar';
 import { useState } from "react";
-import { StatusBar, StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Alert,
+} from "react-native";
 import Header from "./src/components/Header";
+import TodoAdder from "./src/components/TodoAdder";
 import TodoItem from "./src/components/TodoItem";
 
 export default function App() {
@@ -19,13 +27,32 @@ export default function App() {
     });
   };
 
+  // const addTodo = (todo) => {
+  //   setTodos([...todos, todo]);
+  // };
+
+  const addTodo = (text) => {
+    if (text.length > 3) {
+      setTodos((prevTodos) => {
+        return [{ id: Math.random(), description: text }, ...prevTodos];
+      });
+    } else {
+      Alert.alert("oops", "Todos must be over 3 chars long", [
+        {
+          text: "Understood",
+          onPress: () => console.log("understood button pressed"),
+        },
+      ]);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
+        <TodoAdder addHandler={addTodo} />
         <View style={styles.list}>
           <FlatList
-            // numColumns={2}
             data={todos}
             renderItem={(props) => (
               <TodoItem item={props.item} pressHandler={deleteTodo} />
