@@ -35,9 +35,19 @@ export default function App() {
     });
   };
 
-  // const addTodo = (todo) => {
-  //   setTodos([...todos, todo]);
-  // };
+  const addTodoObj = (todoDescription) => {
+    if (todoDescription < 3) {
+      Alert.alert("oops", "Todos must be over 3 chars long", [
+        {
+          text: "Understood",
+          onPress: () => console.log("understood button pressed"),
+        },
+      ]);
+      return;
+    }
+    const newTodo = { id: uuid.v4(), description: todoDescription };
+    setTodos([...todos, newTodo]);
+  };
 
   const addTodo = (text) => {
     if (text.length > 3) {
